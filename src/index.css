@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tm-primary: #38bdf8;
+    --tm-secondary: #22d3ee;
+    --tm-accent: #818cf8;
+    --tm-bg-start: #ffffff;
+    --tm-bg-end: #e0f2fe;
+    --tm-glass: rgba(255, 255, 255, 0.75);
+    --tm-glass-border: rgba(56, 189, 248, 0.25);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-slate-800;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .tm-glass {
+    @apply rounded-3xl border border-primary/20 bg-white/75 shadow-tm-card backdrop-blur-xl;
+  }
+
+  .tm-glass-strong {
+    @apply rounded-3xl border border-primary/30 bg-white/85 shadow-tm-glow backdrop-blur-2xl;
+  }
+
+  .tm-gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.85));
+    border-radius: 1.5rem;
+  }
+
+  .tm-gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #38bdf8, #22d3ee, #818cf8);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .tm-btn-primary {
+    @apply rounded-2xl bg-tm-button px-4 py-2.5 text-sm font-semibold text-white shadow-tm-glow transition-all duration-300;
+  }
+
+  .tm-btn-primary:hover:not(:disabled) {
+    @apply scale-[1.02] shadow-tm-glow-lg;
+  }
+
+  .tm-btn-primary:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .tm-input {
+    @apply w-full rounded-2xl border border-primary/25 bg-white/80 px-4 py-3 text-slate-900 outline-none backdrop-blur-sm transition-all duration-200;
+  }
+
+  .tm-input:focus {
+    @apply border-primary shadow-tm-glow ring-2 ring-primary/20;
+  }
+
+  .tm-page-bg {
+    @apply relative min-h-screen bg-tm-gradient;
+  }
+
+  .tm-nav-active {
+    @apply bg-gradient-to-r from-primary to-secondary text-white shadow-tm-glow;
+  }
+
+  .tm-stat-value {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-gradient-tm {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+}

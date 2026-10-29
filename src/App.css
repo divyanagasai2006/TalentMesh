@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ice-blue: #9FD3E3;       /* Sidebar background */
+  --light-blue: #D1E5EA;     /* Main content background */
+  --card-white: #FFFFFF;     /* Card background */
+  --text-dark: #0F252C;      /* Text color */
+}
+
+body {
+  background-color: var(--light-blue);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
